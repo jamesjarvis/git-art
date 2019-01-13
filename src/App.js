@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Navbar, { NAVBAR } from "./Navbar";
-import GitContributionWall from "./GitContributionComponent/GitContributionClass";
 import GitContributionComponentMain from "./GitContributionComponent/GitContributionComponentMain";
 
 class App extends Component {
@@ -8,7 +7,6 @@ class App extends Component {
     super(props);
     this.state = {
       selectedNav: NAVBAR.TEXT,
-      gitContributionWall: new GitContributionWall()
     };
     this._selectNav = this._selectNav.bind(this);
   }
@@ -39,9 +37,9 @@ class App extends Component {
           selectedNav={this.state.selectedNav}
           navbarTabOnClick={this._selectNav}
         />
-        <GitContributionComponentMain
-          gitWall={this.state.gitContributionWall}
-        />
+
+        <GitContributionComponentMain />
+
       </>
     );
   }

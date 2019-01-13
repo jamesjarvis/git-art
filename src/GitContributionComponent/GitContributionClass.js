@@ -1,20 +1,22 @@
 import moment from "moment";
+import {getStartDate} from '../convert-to-bash';
 
 class GitContributionWall {
   constructor() {
-    this.wall = this.createWall();
+    this.walls = this.createWalls();
   }
-  createWall() {
+  createWalls() {
     let wall = [];
+    //Generates the day of the week
     for (let day = 0; day < 7; day++) {
       let doneDayForWholeYear = false;
-      let now = moment().add(day, "days");
-      let oneYearAgo = moment().subtract(1, "years");
+      let now = moment();
+      let oneYearAgo = moment(getStartDate());
       oneYearAgo = oneYearAgo.add(day, "days");
       let dayArrayForWholeYear = [];
+
       //Generates the number of day (i.e. Monday,Tuesday,...) for the rest of the year on the contribution wall
       while (!doneDayForWholeYear) {
-        dayString += "[ ]";
         dayArrayForWholeYear.push(new WallObject(moment(oneYearAgo)));
         oneYearAgo.add("7", "days");
         doneDayForWholeYear = oneYearAgo > now;
@@ -31,11 +33,14 @@ class GitContributionWall {
     console.log(dayString);
     return wall;
   }
+
+
 }
 
 class WallObject {
   constructor(date) {
     this.date = date;
+    this.value = 0;
   }
 }
 

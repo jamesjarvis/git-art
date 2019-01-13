@@ -1,0 +1,14 @@
+.wall{
+    height:10px;
+}
+
+.column-custom-padding{
+    padding:0.1em;
+}
+
+.hover-content{
+    height: 5vh;
+    width: 5vw;
+    background: #000;
+}
+

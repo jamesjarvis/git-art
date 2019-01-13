@@ -14,7 +14,7 @@ Created using [git-art](https://github.com/jamesjarvis/git-art)`;
 /*
 Get the start date - so the first sunday 1 year ago.
 */
-function getStartDate() {
+export function getStartDate() {
   let startDate = new Date();
   startDate.setUTCFullYear(startDate.getUTCFullYear() - 1);
   startDate.setUTCHours(12);
@@ -85,11 +85,13 @@ function generateBash(image_array, multiplier = 1) {
 const bashy = generateBash(TEMPLATE_ARRAY);
 console.log(bashy);
 
-// Only temporary, just writes the output to a file for testing
-const fs = require("fs");
-fs.writeFile("testing.sh", bashy, function(err) {
-  if (err) {
-    return console.log(err);
-  }
-  console.log("The file was saved!");
-});
+// // Only temporary, just writes the output to a file for testing
+// const fs = require("fs");
+// fs.writeFile("testing.sh", bashy, function(err) {
+//   if (err) {
+//     return console.log(err);
+//   }
+//   console.log("The file was saved!");
+// });
+
+
