@@ -6,9 +6,9 @@
     padding:0.1em;
 }
 
-.hover-content{
-    height: 5vh;
-    width: 5vw;
-    background: #000;
+.tooltip{
+    position: absolute;
+    background: rgba(76, 175, 80, 0.3);
+    border-radius: 6px;
+    padding: 0.2em;
 }
-

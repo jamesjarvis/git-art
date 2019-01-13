@@ -32,7 +32,7 @@ class GitContributionComponentMain extends Component {
                         }
                       )
                     }
-                
+
                   </div>
                 );
               }
@@ -49,7 +49,9 @@ class GitContributionComponentWallBox extends Component {
     super(props);
     this.state = {
       contentHeight:0,
-      hover:false
+      onHover:false,
+      tooltipY:0,
+      tooltipX:0,
     };
   }
   componentDidMount(){
@@ -58,10 +60,18 @@ class GitContributionComponentWallBox extends Component {
     //console.log(`Component size h: ${height}, w: ${width}`);
     this.setState({
       contentHeight:width,
-      onHover:true,
     });
   }
   render() {
+    let tooltipStyle = {};
+    if(this.state.onHover){
+      tooltipStyle={
+        top: `${this.state.tooltipY-45}px`,
+        left:`${this.state.tooltipX - 400}px,`,
+        zIndex: 1
+      }
+    }
+
     return (
       <div className="column column-custom-padding">
         <div 
@@ -69,19 +79,36 @@ class GitContributionComponentWallBox extends Component {
           ref={ (divElement) => this.divElement = divElement}
           style={{height:this.state.contentHeight}}
           onMouseEnter = {(e)=>{
-            console.log(this.props.wallObject)
+            console.log(this.props.wallObject);
+            console.log(`x: ${e.screenX}, y: ${e.screenY}`);
             this.setState({
-              onHover:false
+              onHover:true,
+              tooltipY:e.clientY,
+              tooltipX:e.clientX,
             })
           }}
+          onMouseMove = {
+            (e)=>{
+              this.setState({
+                tooltipY:e.clientY,
+                tooltipX:e.clientX,
+              })
+            }
+          }
           onMouseLeave = {
             ()=>{
               this.setState({
-                onHover:true
+                onHover:false,
+                tooltipY:0,
+                tooltipX:0,
               });
             }
           }
         >
+          <div className="tooltip" hidden={!this.state.onHover} 
+          style={tooltipStyle}>
+            Contributions on {this.props.wallObject.date.format('MMM D, YYYY')}
+          </div>
         </div>
         
       </div>
