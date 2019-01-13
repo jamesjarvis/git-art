@@ -10,3 +10,7 @@ node_modules/
 
 # Optional npm cache directory
 .npm
+
+# Auto generated files
+yarn.lock
+package-lock.json
