@@ -13,4 +13,5 @@ node_modules/
 
 # Temporary dev files
 template.sh
+testing.sh
 testing/

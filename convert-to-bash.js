@@ -38,8 +38,7 @@ function commit(date, commits) {
   let dayCommitInstructions = [];
   for (i = 0; i < commits; i++) {
     dayCommitInstructions.push(
-      `GIT_AUTHOR_DATE=${commitDate.toUTCString()} GIT_COMMITTER_DATE=${commitDate.toUTCString()}
-      git commit --allow-empty -m "git-art" > /dev/null`
+      `GIT_AUTHOR_DATE=${commitDate.toISOString()} GIT_COMMITTER_DATE=${commitDate.toISOString()} git commit --allow-empty -a -m "git-art" > /dev/null`
     );
     commitDate.setUTCMinutes(commitDate.getUTCMinutes() + 1);
   }
@@ -67,7 +66,30 @@ function generateBash(image_array, multiplier = 1) {
       startDate.setDate(startDate.getDate() + 1);
     }
   }
-  return commitInstructions.join("\n");
+
+  let bashScript = `#!/usr/bin/env bash
+  REPO=testing
+  git init $REPO
+  cd $REPO
+  touch README.md
+  echo \"${README_TEMPLATE}\" >> README.md
+  git add README.md
+  touch git-art
+  git add git-art
+  ${commitInstructions.join("\n")}
+  echo Well done this has worked`;
+
+  return bashScript;
 }
 
-console.log(generateBash(TEMPLATE_ARRAY));
+const bashy = generateBash(TEMPLATE_ARRAY);
+console.log(bashy);
+
+// Only temporary, just writes the output to a file for testing
+const fs = require("fs");
+fs.writeFile("testing.sh", bashy, function(err) {
+  if (err) {
+    return console.log(err);
+  }
+  console.log("The file was saved!");
+});
