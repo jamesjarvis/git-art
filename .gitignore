@@ -10,3 +10,7 @@ node_modules/
 
 # Optional npm cache directory
 .npm
+
+# Temporary dev files
+template.sh
+testing/
