@@ -36,7 +36,7 @@ Returns a string of commit information for that day, based on the number of comm
 function commit(date, commits) {
   let commitDate = new Date(date.valueOf());
   let dayCommitInstructions = [];
-  for (i = 0; i < commits; i++) {
+  for (let i = 0; i < commits; i++) {
     dayCommitInstructions.push(
       `GIT_AUTHOR_DATE=${commitDate.toISOString()} GIT_COMMITTER_DATE=${commitDate.toISOString()} git commit --allow-empty -a -m "git-art" > /dev/null`
     );
@@ -54,8 +54,8 @@ function generateBash(image_array, multiplier = 1) {
   const length = Math.min(...image_array.map(x => x.length));
   let commitInstructions = [];
 
-  for (week = 0; week < length; week++) {
-    for (day = 0; day < image_array.length; day++) {
+  for (let week = 0; week < length; week++) {
+    for (let day = 0; day < image_array.length; day++) {
       const daysCommits = commit(
         startDate,
         image_array[day][week] * multiplier

@@ -15,3 +15,7 @@ node_modules/
 template.sh
 testing.sh
 testing/
+
+# Auto generated files
+yarn.lock
+package-lock.json
