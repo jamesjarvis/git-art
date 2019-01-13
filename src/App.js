@@ -19,7 +19,7 @@ class App extends Component {
   render() {
     function CreateHeader() {
       return (
-        <section className="hero is-dark">
+        <section className="hero is-info">
           <div className="hero-body">
             <div className="container">
               <h1 className="title">Git Art</h1>

@@ -42,6 +42,32 @@ class WallObject {
     this.date = date;
     this.value = 0;
   }
+
+  getClassName(){
+    let today = moment();
+    if(this.date > today){
+      return 'wall';
+    }
+    let className = "wall";
+    switch (this.value){
+      case 1:
+        className+=" wall-lighter-green";
+        break;
+      case 2:
+        className+=" wall-light-green";
+        break;
+      case 3:
+        className+=" wall-dark-green";
+        break;
+      case 4:
+        className+=" wall-darker-green";
+        break;
+      default:
+        className+=" wall-grey";
+        break;
+    }
+    return className;
+  }
 }
 
 export default GitContributionWall;

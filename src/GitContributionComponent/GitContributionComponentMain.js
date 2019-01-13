@@ -77,7 +77,6 @@ class GitContributionComponentWallBox extends Component {
   render() {
     let tooltipStyle = {};
     if(this.state.onHover){
-      console.log(this.state.tooltipX );
       let leftOffset = 60;
       if(window.innerWidth - this.state.tooltipX <= 180){
         leftOffset = 200;
@@ -90,27 +89,20 @@ class GitContributionComponentWallBox extends Component {
         top: `${this.state.tooltipY-45}px`,
         zIndex: 1
       }
-      console.log(tooltipStyle);
     }
-    function getClassName(date){
-      let today = moment();
-      if(date > today){
-        return 'wall';
-      }
-      return "has-background-grey-lighter wall";
-    }
+
     return (
       <div className="column column-custom-padding">
         <div 
-          className =   {getClassName(this.props.wallObject.date)}
+          className =   {this.props.wallObject.getClassName()}
           ref={ (divElement) => this.divElement = divElement}
           style={{height:this.state.contentHeight}}
           onMouseEnter = {(e)=>{
             if(this.props.wallObject.date > moment()){
               return null;
             }
-            console.log(this.props.wallObject);
-            console.log(`x: ${e.screenX}, y: ${e.screenY}`);
+            // console.log(this.props.wallObject);
+            // console.log(`x: ${e.screenX}, y: ${e.screenY}`);
             this.setState({
               onHover:true,
               tooltipY:e.clientY,
