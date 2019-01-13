@@ -12,8 +12,7 @@ node_modules/
 .npm
 
 # Temporary dev files
-template.sh
-testing.sh
+*.sh
 testing/
 
 # Auto generated files
