@@ -10,7 +10,7 @@ class GitContributionWall {
     //Generates the day of the week
     for (let day = 0; day < 7; day++) {
       let doneDayForWholeYear = false;
-      let now = moment();
+      let now = moment().add(day,"days");
       let oneYearAgo = moment(getStartDate());
       oneYearAgo = oneYearAgo.add(day, "days");
       let dayArrayForWholeYear = [];
