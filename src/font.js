@@ -960,3 +960,33 @@ const FONT = {
     [0, 0, 1, 1, 1, 1, 0, 0]
   ]
 };
+
+function isBlank(array) {
+  let booly = true;
+  for (let a in array) {
+    booly = booly && array[a] === 0;
+  }
+  return booly;
+}
+
+function convert7X7(array2D) {
+  let new2D = Object(array2D);
+  if (isBlank(array2D[0])) {
+    new2D.splice(0, 1);
+  } else if (isBlank(array2D[array2D.length - 1])) {
+    new2D.splice(array2D.length - 1, 1);
+  } else {
+    new2D.splice(4, 1);
+  }
+  return new2D;
+}
+
+function convertFont(font) {
+  let newFont = Object(font);
+  for (let i in font) {
+    newFont[i] = convert7X7(font[i]);
+  }
+  return newFont;
+}
+
+console.log(convertFont(FONT));
