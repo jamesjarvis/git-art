@@ -1,7 +1,12 @@
 .wall{
     height:10px;
 }
-
+.wall-special{
+    height:20px;
+    width:20px;
+    float:right;
+    margin-left: 10px;
+}
 .column-custom-padding{
     padding:0.1em;
 }

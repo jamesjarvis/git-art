@@ -2,17 +2,25 @@ import React, { Component } from "react";
 import Navbar, { NAVBAR } from "./Navbar";
 import {GitWallContext, gitWall} from './AppContext/GitWallContext';
 import GitContributionComponentMain from "./GitContributionComponent/GitContributionComponentMain";
+import DrawComponentMain from './DrawComponent/DrawComponentMain';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       selectedNav: NAVBAR.TEXT,
-      gitWallObject: gitWall
+      gitWallObject: gitWall,
+      drawValue:0
     };
     this._selectNav = this._selectNav.bind(this);
+    this._setDrawValue = this._setDrawValue.bind(this);
   }
-
+  _setDrawValue(value){
+    console.log(value);
+    this.setState({
+      drawValue:value
+    });
+  }
   _selectNav(navbarTab) {
     this.setState({
       selectedNav: navbarTab
@@ -39,7 +47,12 @@ class App extends Component {
           selectedNav={this.state.selectedNav}
           navbarTabOnClick={this._selectNav}
         />
-        <GitWallContext.Provider value={{gitWallObject: this.state.gitWallObject}}>
+
+        <GitWallContext.Provider value={{
+            ...this.state,
+            setDrawValue:this._setDrawValue
+          }}>
+          {this.state.selectedNav == NAVBAR.DRAW && <DrawComponentMain/>}
           <GitContributionComponentMain />
         </GitWallContext.Provider>
         

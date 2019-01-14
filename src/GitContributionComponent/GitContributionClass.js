@@ -43,7 +43,9 @@ class WallObject {
     this.date = date;
     this.value = 0;
   }
-
+  setValue(newValue){
+    this.value = newValue;
+  }
   getClassName(){
     let today = moment();
     if(this.date > today){

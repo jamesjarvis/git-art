@@ -1,19 +1,33 @@
 import React, { Component } from "react";
 import moment from 'moment';
+import {NAVBAR} from '../Navbar';
 import {GitWallContext} from '../AppContext/GitWallContext';
 //CSS
 import './css/GitContribution.css';
 
 class GitContributionComponentMain extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      hasMouseDown:false,
+    }
+  }
 
-  componentDidMount(){
+  _hasMouseClick(){
+
   }
 
   render() {
 
     return (
       <section className="section">
-          <div className="box">
+          <div className="box" 
+            onMouseDown = {()=>{this.setState({hasMouseDown:true})}} 
+            onMouseUp = {()=>this.setState({hasMouseDown:false})}
+            onMouseLeave = {()=>{
+              if(this.state.hasMouseDown){this.setState({hasMouseDown:false})}
+            }}
+            >
             <GitWallContext.Consumer>
               {
                 (consumerProps)=>(
@@ -28,6 +42,9 @@ class GitContributionComponentMain extends Component {
                                   <GitContributionComponentWallBox 
                                     key={wallCol.date.format()+"-col"}
                                     wallObject={wallCol}
+                                    selectedNav = {consumerProps.selectedNav}
+                                    drawValue = {consumerProps.drawValue}
+                                    hasMouseDown = {this.state.hasMouseDown}
                                   />
                                 )
                               }
@@ -58,26 +75,16 @@ class GitContributionComponentWallBox extends Component {
       tooltipY:0,
       tooltipX:0,
     };
-    console.log("CREATING!");
   }
   componentDidMount(){
     const width = this.divElement.clientWidth;
-    window.addEventListener("resize", this.handleResize);
     //console.log(`Component size h: ${height}, w: ${width}`);
     this.setState({
       contentHeight:width,
     });
   }
 
-  componentWillMount() {
-    window.removeEventListener("resize", this.handleResize);
-  }
-  handleResize = e => {
-    const width = this.divElement.clientWidth;
-    this.setState({
-      contentHeight:width,
-    })
-  };
+
 
   render() {
     let tooltipStyle = {};
@@ -106,17 +113,26 @@ class GitContributionComponentWallBox extends Component {
             if(this.props.wallObject.date > moment()){
               return null;
             }
+            if(this.props.selectedNav == NAVBAR.DRAW && this.props.hasMouseDown){
+              this.props.wallObject.setValue(this.props.drawValue);
+              
+            }
+            if(this.props.selectedNav != NAVBAR.DRAW){
+              this.setState({
+                onHover:true,
+                tooltipY:e.clientY,
+                tooltipX:e.clientX,
+              })
+            }
+
+            
             // console.log(this.props.wallObject);
             // console.log(`x: ${e.screenX}, y: ${e.screenY}`);
-            this.setState({
-              onHover:true,
-              tooltipY:e.clientY,
-              tooltipX:e.clientX,
-            })
+ 
           }}
           onMouseMove = {
             (e)=>{
-              if(this.props.wallObject.date > moment()){
+              if(this.props.wallObject.date > moment()|| this.props.selectedNav == NAVBAR.DRAW){
                 return null;
               }
               this.setState({
@@ -125,6 +141,14 @@ class GitContributionComponentWallBox extends Component {
               })
             }
           }
+          onMouseDown = {
+            ()=>{
+              if(this.props.selectedNav == NAVBAR.DRAW){
+                this.props.wallObject.setValue(this.props.drawValue);
+              }
+            }
+          }
+
           onMouseLeave = {
             ()=>{
               if(this.props.wallObject.date > moment()){
