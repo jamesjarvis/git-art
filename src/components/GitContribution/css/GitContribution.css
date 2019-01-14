@@ -1,0 +1,39 @@
+.wall {
+  height: 10px;
+}
+.wall-special {
+  height: 20px;
+  width: 20px;
+  float: right;
+  margin-left: 10px;
+}
+.column-custom-padding {
+  padding: 0.1em;
+}
+
+.tooltip {
+  position: absolute;
+  background: rgba(76, 175, 80, 0.3);
+  border-radius: 6px;
+  padding: 0.2em;
+}
+
+.wall-grey {
+  background: #ebedf0;
+}
+
+.wall-lighter-green {
+  background: #c6e38f;
+}
+
+.wall-light-green {
+  background: #7ec773;
+}
+
+.wall-dark-green {
+  background: #2a9940;
+}
+
+.wall-darker-green {
+  background: #1d6029;
+}

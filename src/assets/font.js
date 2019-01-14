@@ -1,3 +1,8 @@
+/* 
+The Sinclair Spectrum font, originally retrieved from:
+https://github.com/pikesley/nineteen-eighty-two/blob/6057f8e478a560b9fd1005530354a87401b30ebe/config/characters.yml
+and then converted to 7X7 2D array format for our purposes.
+*/
 export const FONT = {
   "0": [
     [0, 1, 1, 1, 1, 0, 0],

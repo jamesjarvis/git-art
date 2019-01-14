@@ -72,7 +72,7 @@ function generateBash(image_array, multiplier = 1) {
   git init $REPO
   cd $REPO
   touch README.md
-  echo \"${README_TEMPLATE}\" >> README.md
+  echo "${README_TEMPLATE}" >> README.md
   git add README.md
   touch git-art
   git add git-art
@@ -82,8 +82,8 @@ function generateBash(image_array, multiplier = 1) {
   return bashScript;
 }
 
-// const bashy = generateBash(TEMPLATE_ARRAY);
-// console.log(bashy);
+const bashy = generateBash(TEMPLATE_ARRAY);
+console.log(bashy);
 
 // // Only temporary, just writes the output to a file for testing
 // const fs = require("fs");
@@ -93,5 +93,3 @@ function generateBash(image_array, multiplier = 1) {
 //   }
 //   console.log("The file was saved!");
 // });
-
-
