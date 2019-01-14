@@ -99,19 +99,25 @@ let dict = {
 
 
 function decimalToBinary(num) {
-    var bin = [];
-    while (num > 0) {
+  var bin = [];
+  while (num > 0) {
     bin.unshift(num % 2);
     num >>= 1; // basically /= 2 without remainder if any
-    }
-    while (bin.length < 8) {
-        bin.unshift(0);
-    }
-    return bin.join('');
   }
-
-  console.log(decimalToBinary(19));
-
-  for (const c in dict) {
-      console.log(c);
+  while (bin.length < 8) {
+    bin.unshift(0);
   }
+  return bin;
+}
+
+const newarr = Object(dict);
+
+for (let c in newarr) {
+  let temp = [];
+  for (let i in newarr[c]) {
+    temp.push(decimalToBinary(newarr[c][i]));
+  }
+  newarr[c] = temp;
+}
+
+console.log(newarr);
