@@ -82,8 +82,8 @@ function generateBash(image_array, multiplier = 1) {
   return bashScript;
 }
 
-const bashy = generateBash(TEMPLATE_ARRAY);
-console.log(bashy);
+// const bashy = generateBash(TEMPLATE_ARRAY);
+// console.log(bashy);
 
 // // Only temporary, just writes the output to a file for testing
 // const fs = require("fs");

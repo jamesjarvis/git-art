@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import {GitWallContext} from '../AppContext/GitWallContext';
 import moment from 'moment';
 
 //CSS
@@ -141,7 +140,5 @@ class GitContributionComponentWallBox extends Component {
     );
   }
 }
-
-GitContributionComponentMain.contextType = GitWallContext;
 
 export default GitContributionComponentMain;

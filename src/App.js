@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Navbar, { NAVBAR } from "./Navbar";
+import {GitWallContext} from './AppContext/GitWallContext';
 import GitContributionComponentMain from "./GitContributionComponent/GitContributionComponentMain";
 
 class App extends Component {
@@ -37,8 +38,10 @@ class App extends Component {
           selectedNav={this.state.selectedNav}
           navbarTabOnClick={this._selectNav}
         />
-
-        <GitContributionComponentMain />
+        <GitWallContext.Provider>
+          <GitContributionComponentMain />
+        </GitWallContext.Provider>
+        
 
       </>
     );
