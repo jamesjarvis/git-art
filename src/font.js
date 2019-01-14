@@ -969,7 +969,7 @@ function isBlank(array) {
   return booly;
 }
 
-function convert7X7(array2D) {
+function convert8X7(array2D) {
   let new2D = Object(array2D);
   if (isBlank(array2D[0])) {
     new2D.splice(0, 1);
@@ -981,10 +981,34 @@ function convert7X7(array2D) {
   return new2D;
 }
 
+function convert7X7(array2D) {
+
+  let first = Object(array2D).map(a => a[0]);
+  // console.log(first);
+  let last = Object(array2D).map(a => a[array2D[0].length - 1]);
+  if (isBlank(first)) {
+    for (let i in array2D) {
+      // console.log(array2D[i]);
+      array2D[i].splice(0, 1);
+    }
+  } else if (isBlank(last)) {
+    for (let i in array2D) {
+      array2D[i].splice(array2D[i].length - 1, 1);
+    }
+  } else {
+    for (let i in array2D) {
+      array2D[i].splice(3, 1);
+    }
+  }
+  // console.log(array2D, first, last);
+  return array2D;
+}
+
 function convertFont(font) {
   let newFont = Object(font);
   for (let i in font) {
-    newFont[i] = convert7X7(font[i]);
+    newFont[i] = convert8X7(font[i]);
+    newFont[i] = convert7X7(newFont[i]);
   }
   return newFont;
 }
