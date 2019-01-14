@@ -1,4 +1,4 @@
-const dict = {
+let dict = {
   "0": [0, 60, 70, 74, 82, 98, 60, 0],
   "1": [0, 24, 40, 8, 8, 8, 62, 0],
   "2": [0, 60, 66, 2, 60, 64, 126, 0],
@@ -96,3 +96,22 @@ const dict = {
   "~": [0, 20, 40, 0, 0, 0, 0, 0],
   "©": [60, 66, 153, 161, 161, 153, 66, 60]
 };
+
+
+function decimalToBinary(num) {
+    var bin = [];
+    while (num > 0) {
+    bin.unshift(num % 2);
+    num >>= 1; // basically /= 2 without remainder if any
+    }
+    while (bin.length < 8) {
+        bin.unshift(0);
+    }
+    return bin.join('');
+  }
+
+  console.log(decimalToBinary(19));
+
+  for (const c in dict) {
+      console.log(c);
+  }
