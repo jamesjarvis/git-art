@@ -16,11 +16,9 @@ class GitContributionComponentMain extends Component {
           <div className="box">
             <GitWallContext.Consumer>
               {
-                (consumerProps)=>{
-                  console.log(consumerProps.walls);
-                  consumerProps.walls.map(
+                (consumerProps)=>(
+                  consumerProps.gitWallObject.walls.map(
                     (wallRow)=>{
-                      console.log(wallRow);
                       return(
                         <div key={wallRow[0].date.format()+"-rowHeader" }className="columns">
                           {
@@ -40,7 +38,7 @@ class GitContributionComponentMain extends Component {
                       );
                     }
                   )   
-                }
+                )
               }
             </GitWallContext.Consumer>
 

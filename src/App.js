@@ -39,7 +39,7 @@ class App extends Component {
           selectedNav={this.state.selectedNav}
           navbarTabOnClick={this._selectNav}
         />
-        <GitWallContext.Provider value={this.state.gitWallObject}>
+        <GitWallContext.Provider value={{gitWallObject: this.state.gitWallObject}}>
           <GitContributionComponentMain />
         </GitWallContext.Provider>
         
