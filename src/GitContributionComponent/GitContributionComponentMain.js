@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import moment from 'moment';
-
+import {GitWallContext} from '../AppContext/GitWallContext';
 //CSS
 import './css/GitContribution.css';
 
 class GitContributionComponentMain extends Component {
 
   componentDidMount(){
-    console.log(this.context);
   }
 
   render() {
@@ -15,28 +14,36 @@ class GitContributionComponentMain extends Component {
     return (
       <section className="section">
           <div className="box">
-
-            {this.context.gitWall.walls.map(
-              (wallRow)=>{
-                return(
-                  <div key={wallRow[0].date.format()+"-rowHeader" }className="columns">
-                    {
-                      wallRow.map(
-                        (wallCol)=>{
-                          return(
-                            <GitContributionComponentWallBox 
-                              key={wallCol.date.format()+"-col"}
-                              wallObject={wallCol}
-                            />
-                          )
-                        }
-                      )
+            <GitWallContext.Consumer>
+              {
+                (consumerProps)=>{
+                  console.log(consumerProps.walls);
+                  consumerProps.walls.map(
+                    (wallRow)=>{
+                      console.log(wallRow);
+                      return(
+                        <div key={wallRow[0].date.format()+"-rowHeader" }className="columns">
+                          {
+                            wallRow.map(
+                              (wallCol)=>{
+                                return(
+                                  <GitContributionComponentWallBox 
+                                    key={wallCol.date.format()+"-col"}
+                                    wallObject={wallCol}
+                                  />
+                                )
+                              }
+                            )
+                          }
+      
+                        </div>
+                      );
                     }
-
-                  </div>
-                );
+                  )   
+                }
               }
-            )}
+            </GitWallContext.Consumer>
+
           </div>
       </section>
     );
@@ -53,6 +60,7 @@ class GitContributionComponentWallBox extends Component {
       tooltipY:0,
       tooltipX:0,
     };
+    console.log("CREATING!");
   }
   componentDidMount(){
     const width = this.divElement.clientWidth;
@@ -93,7 +101,7 @@ class GitContributionComponentWallBox extends Component {
     return (
       <div className="column column-custom-padding">
         <div 
-          className =   {this.props.wallObject.getClassName()}
+          className = {this.props.wallObject.getClassName()}
           ref={ (divElement) => this.divElement = divElement}
           style={{height:this.state.contentHeight}}
           onMouseEnter = {(e)=>{

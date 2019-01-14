@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Navbar, { NAVBAR } from "./Navbar";
-import {GitWallContext} from './AppContext/GitWallContext';
+import {GitWallContext, gitWall} from './AppContext/GitWallContext';
 import GitContributionComponentMain from "./GitContributionComponent/GitContributionComponentMain";
 
 class App extends Component {
@@ -8,6 +8,7 @@ class App extends Component {
     super(props);
     this.state = {
       selectedNav: NAVBAR.TEXT,
+      gitWallObject: gitWall
     };
     this._selectNav = this._selectNav.bind(this);
   }
@@ -30,7 +31,7 @@ class App extends Component {
         </section>
       );
     }
-
+    console.log(this.state.gitWallObject);
     return (
       <>
         <CreateHeader />
@@ -38,7 +39,7 @@ class App extends Component {
           selectedNav={this.state.selectedNav}
           navbarTabOnClick={this._selectNav}
         />
-        <GitWallContext.Provider>
+        <GitWallContext.Provider value={this.state.gitWallObject}>
           <GitContributionComponentMain />
         </GitWallContext.Provider>
         

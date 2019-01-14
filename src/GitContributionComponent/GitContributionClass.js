@@ -19,6 +19,7 @@ class GitContributionWall {
       while (!doneDayForWholeYear) {
         dayArrayForWholeYear.push(new WallObject(moment(oneYearAgo)));
         oneYearAgo.add("7", "days");
+
         doneDayForWholeYear = oneYearAgo > now;
       }
       wall.push(dayArrayForWholeYear);
