@@ -15,9 +15,16 @@ class App extends Component {
     };
     this._selectNav = this._selectNav.bind(this);
     this._setDrawValue = this._setDrawValue.bind(this);
+    this._updateGitWallObj = this._updateGitWallObj.bind(this);
   }
+  _updateGitWallObj(gitWallObject){
+    this.setState({
+      gitWallObject:gitWallObject
+    });
+  }
+
   _setDrawValue(value) {
-    console.log(value);
+    // console.log(value);
     this.setState({
       drawValue: value
     });
@@ -40,7 +47,7 @@ class App extends Component {
         </section>
       );
     }
-    console.log(this.state.gitWallObject);
+    // console.log(this.state.gitWallObject);
     return (
       <>
         <CreateHeader />
@@ -52,11 +59,21 @@ class App extends Component {
         <GitWallContext.Provider
           value={{
             ...this.state,
-            setDrawValue: this._setDrawValue
+            setDrawValue: this._setDrawValue,
+            updateGitWallObj: this._updateGitWallObj
           }}
         >
           {this.state.selectedNav == NAVBAR.DRAW && <SelectColour />}
-          {this.state.selectedNav == NAVBAR.TEXT && <TextInput />}
+          {this.state.selectedNav == NAVBAR.TEXT && 
+          <GitWallContext.Consumer>
+            {
+              consumerProps =>
+                <TextInput
+                  consumerProps = {consumerProps}/>
+              
+            }
+          </GitWallContext.Consumer>
+          }
           <GitContribution />
         </GitWallContext.Provider>
       </>

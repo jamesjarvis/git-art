@@ -41,6 +41,54 @@ class WallObject {
 class GitContributionWall {
   constructor() {
     this.walls = this.createWalls();
+
+    this.state = {
+      tempState: []
+    };
+    this.addArray = this.addArray.bind(this);
+    this.unsetAllWall = this.unsetAllWall.bind(this);
+  }
+
+  unsetAllWall() {
+    for (
+      let outerArrayIndex = 0;
+      outerArrayIndex < this.walls.length;
+      outerArrayIndex++
+    ) {
+      for (
+        let innerArrayIndex = 0;
+        innerArrayIndex < this.walls[outerArrayIndex].length;
+        innerArrayIndex++
+      ) {
+        this.walls[outerArrayIndex][innerArrayIndex].setValue(0);
+        console.log(this.walls[outerArrayIndex][innerArrayIndex].value);
+      }
+    }
+    //return this;
+  }
+
+  addArray(array2d) {
+    for (
+      let outerArrayIndex = 0;
+      outerArrayIndex < this.walls.length;
+      outerArrayIndex++
+    ) {
+      for (
+        let innerArrayIndex = 0;
+        innerArrayIndex < this.walls[outerArrayIndex].length;
+        innerArrayIndex++
+      ) {
+        //console.log(this.walls[outerArrayIndex][innerArrayIndex].value);
+        try {
+          this.walls[outerArrayIndex][innerArrayIndex].setValue(
+            array2d[outerArrayIndex][innerArrayIndex]
+          );
+        } catch (err) {
+          this.walls[outerArrayIndex][innerArrayIndex].setValue(0);
+        }
+      }
+    }
+    return this;
   }
 
   createWalls() {
