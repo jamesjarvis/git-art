@@ -24,36 +24,17 @@ export default class TextInput extends Component {
   generate_text_array(text) {
     let stringArray = new Array();
     for (let index = 0; index < text.length; index++) {
-      var characterArray = [];
-      const fontThing = new Object(FONT.sinclair[text[index]]);
-      Object.assign(characterArray,fontThing);
-      // console.log(text,index, FONT[text[index]]);
-      if (characterArray.length > 0) {
-      // console.log(text[character], characterArray[0].length)
-      // console.log(characterArray);
-      // console.log(text[character], characterArray[0].length)
-      }
-      if (stringArray.length === 0) {
-        //stringArray = [];
-        Object.assign(stringArray,characterArray);
-      } else {
-        // console.log("IM IN THE ELSE!");
-        for (const i in characterArray) {
-          // console.log(i);
-          let clonedCharacterArrayI = [];
-          Object.assign(clonedCharacterArrayI,characterArray[i]);
-          for(const a in clonedCharacterArrayI) {
-            stringArray[i].push(clonedCharacterArrayI[a]);
-          }
-          // stringArray[i] = stringArray[i].concat(characterArray[i]);
-          // console.log(stringArray[i]);
+
+      let currentSinclairFont = FONT.sinclair[text[index]]
+      for(var outerArrayIndex = 0; outerArrayIndex < currentSinclairFont.length; outerArrayIndex++){
+        stringArray.push([]);
+        for(var innerArrayIndex = 0; innerArrayIndex < currentSinclairFont[outerArrayIndex].length; innerArrayIndex++){
+          stringArray[outerArrayIndex].push(currentSinclairFont[outerArrayIndex][innerArrayIndex]);
         }
       }
-      // console.log("AFtER");
-      // console.log(stringArray);
-      characterArray = [];
+
     }
-    // console.log(stringArray);
+    console.log(stringArray);
     
     return stringArray;
   }
