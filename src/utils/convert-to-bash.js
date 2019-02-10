@@ -1,13 +1,3 @@
-const TEMPLATE_ARRAY = [
-  [0, 1, 2, 3, 4, 3, 2, 1, 0],
-  [0, 1, 2, 3, 4, 3, 2, 1, 0],
-  [0, 1, 2, 3, 4, 3, 2, 1, 0],
-  [0, 1, 2, 3, 4, 3, 2, 1, 0],
-  [0, 1, 2, 3, 4, 3, 2, 1, 0],
-  [0, 1, 2, 3, 4, 3, 2, 1, 0],
-  [0, 1, 2, 3, 4, 3, 2, 1, 0]
-]; //This should be a gradiented box.
-
 const README_TEMPLATE = `#My Github Art
 Created using [git-art](https://github.com/jamesjarvis/git-art)`;
 
@@ -23,7 +13,7 @@ export function getStartDate() {
   let weekDay = startDate.getUTCDay();
 
   while (weekDay !== 0) {
-    startDate.setUTCDate(startDate.getUTCDate() + 1);
+    startDate.setUTCDate(startDate.getUTCDate() - 1);
     weekDay = startDate.getUTCDay();
   }
 
@@ -49,7 +39,7 @@ function commit(date, commits) {
 This function should convert the supplied 2d array from the parameter into a bash script which can be run by the user.
 The bash script should take the 2d array, create a git repo with the required commits and then upload it to the repo specified.
 */
-function generateBash(image_array, multiplier = 1) {
+export function generateBash(image_array, multiplier = 1) {
   let startDate = getStartDate();
   const length = Math.min(...image_array.map(x => x.length));
   let commitInstructions = [];

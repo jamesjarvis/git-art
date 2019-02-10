@@ -1,0 +1,13 @@
+.columncontainer {
+  display: flex;
+  justify-content: center;
+  width: 100% !important;
+  flex-wrap: nowraps;
+  padding: 0;
+}
+
+.box {
+  min-width: 400px;
+  max-width: 1000px;
+  margin: auto;
+}

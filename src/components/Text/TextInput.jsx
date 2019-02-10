@@ -1,56 +1,75 @@
-import React, { Component } from "react";
-const FONT = require('../../assets/font.json');
-// import { FONT } from "../../assets/font";
+import React, { PureComponent } from "react";
+import { getCharacterArray, checkCharExists } from "../../utils/font_interface";
 
-export default class TextInput extends Component {
+export default class TextInput extends PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
-      text: '',
-    }
-    console.log(this.props.consumerProps)
+      text: ""
+    };
     this.updateInputValue = this.updateInputValue.bind(this);
   }
 
   updateInputValue(event) {
-    // console.log(event.target.value);
-    
+    const {
+      target: { value }
+    } = event;
+
+    let checkedValue = ""; //This section removes any characters which are not in the font
+    for (let index in value) {
+      if (checkCharExists(value[index])) {
+        checkedValue += value[index];
+      }
+    }
     this.setState({
-      text: event.target.value,
-    },()=>{this.setGitWall(this.state.text);});
+      text: checkedValue
+    });
+    this.setGitWall(checkedValue);
   }
 
   generate_text_array(text) {
-    let stringArray = new Array();
+    let stringArray = [];
     for (let index = 0; index < text.length; index++) {
-
-      let currentSinclairFont = FONT.sinclair[text[index]]
-      for(var outerArrayIndex = 0; outerArrayIndex < currentSinclairFont.length; outerArrayIndex++){
-        stringArray.push([]);
-        for(var innerArrayIndex = 0; innerArrayIndex < currentSinclairFont[outerArrayIndex].length; innerArrayIndex++){
-          stringArray[outerArrayIndex].push(currentSinclairFont[outerArrayIndex][innerArrayIndex]);
+      let currentSinclairFont = getCharacterArray(text[index]);
+      if (currentSinclairFont) {
+        for (
+          var outerArrayIndex = 0;
+          outerArrayIndex < currentSinclairFont.length;
+          outerArrayIndex++
+        ) {
+          stringArray.push([]);
+          for (
+            var innerArrayIndex = 0;
+            innerArrayIndex < currentSinclairFont[outerArrayIndex].length;
+            innerArrayIndex++
+          ) {
+            stringArray[outerArrayIndex].push(
+              currentSinclairFont[outerArrayIndex][innerArrayIndex]
+            );
+          }
         }
       }
-
     }
-    console.log(stringArray);
-    
+
     return stringArray;
   }
-  
+
   setGitWall(text) {
-    // console.log(text);
-    //console.log(generate_text_array(text));
-    let newGitWallObj = this.props.consumerProps.gitWallObject.addArray(this.generate_text_array(text));
-    this.props.consumerProps.updateGitWallObj(newGitWallObj);
+    let textWall = this.generate_text_array(text);
+    this.props.updateWall(textWall);
   }
 
   render() {
     return (
       <section className="section">
         <div className="box has-text-centered">
-          <input className="input" type="text" value={this.state.text} onChange={this.updateInputValue} />
+          <input
+            className="input"
+            type="text"
+            value={this.state.text}
+            onChange={this.updateInputValue}
+          />
         </div>
       </section>
     );
