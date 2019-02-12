@@ -1,5 +1,7 @@
 import React, { PureComponent } from "react";
-import { getCharacterArray, checkCharExists } from "../../utils/font_interface";
+import { checkCharExists, getTextArray } from "../../utils/fontInterface";
+import "./TextInput.css";
+import Box from "../Box/Box";
 
 export default class TextInput extends PureComponent {
   constructor(props) {
@@ -28,50 +30,21 @@ export default class TextInput extends PureComponent {
     this.setGitWall(checkedValue);
   }
 
-  generate_text_array(text) {
-    let stringArray = [];
-    for (let index = 0; index < text.length; index++) {
-      let currentSinclairFont = getCharacterArray(text[index]);
-      if (currentSinclairFont) {
-        for (
-          var outerArrayIndex = 0;
-          outerArrayIndex < currentSinclairFont.length;
-          outerArrayIndex++
-        ) {
-          stringArray.push([]);
-          for (
-            var innerArrayIndex = 0;
-            innerArrayIndex < currentSinclairFont[outerArrayIndex].length;
-            innerArrayIndex++
-          ) {
-            stringArray[outerArrayIndex].push(
-              currentSinclairFont[outerArrayIndex][innerArrayIndex]
-            );
-          }
-        }
-      }
-    }
-
-    return stringArray;
-  }
-
   setGitWall(text) {
-    let textWall = this.generate_text_array(text);
+    let textWall = getTextArray(text);
     this.props.updateWall(textWall);
   }
 
   render() {
     return (
-      <section className="section">
-        <div className="box has-text-centered">
-          <input
-            className="input"
-            type="text"
-            value={this.state.text}
-            onChange={this.updateInputValue}
-          />
-        </div>
-      </section>
+      <Box title="Enter text">
+        <input
+          className="text"
+          type="text"
+          value={this.state.text}
+          onChange={this.updateInputValue}
+        />
+      </Box>
     );
   }
 }

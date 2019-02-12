@@ -1,5 +1,5 @@
 import moment from "moment";
-import { getStartDate } from "./convert-to-bash";
+import { getStartDate } from "./convertToBash";
 
 /**
  * Generates a blank year long wall template

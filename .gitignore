@@ -16,5 +16,4 @@ node_modules/
 testing/
 
 # Auto generated files
-yarn.lock
 package-lock.json

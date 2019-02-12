@@ -1,4 +1,4 @@
-const README_TEMPLATE = `#My Github Art
+const README_TEMPLATE = `# My Github Art\n
 Created using [git-art](https://github.com/jamesjarvis/git-art)`;
 
 /*
@@ -39,16 +39,16 @@ function commit(date, commits) {
 This function should convert the supplied 2d array from the parameter into a bash script which can be run by the user.
 The bash script should take the 2d array, create a git repo with the required commits and then upload it to the repo specified.
 */
-export function generateBash(image_array, multiplier = 1) {
+export function generateBash(imageArray, multiplier = 1) {
   let startDate = getStartDate();
-  const length = Math.min(...image_array.map(x => x.length));
+  const length = Math.min(...imageArray.map(x => x.length));
   let commitInstructions = [];
 
   for (let week = 0; week < length; week++) {
-    for (let day = 0; day < image_array.length; day++) {
+    for (let day = 0; day < imageArray.length; day++) {
       const daysCommits = commit(
         startDate,
-        image_array[day][week] * multiplier
+        imageArray[day][week] * multiplier
       );
       if (daysCommits.length > 0) {
         commitInstructions.push(daysCommits.join("\n"));
@@ -71,15 +71,3 @@ export function generateBash(image_array, multiplier = 1) {
 
   return bashScript;
 }
-
-// const bashy = generateBash(TEMPLATE_ARRAY);
-// console.log(bashy);
-
-// // Only temporary, just writes the output to a file for testing
-// const fs = require("fs");
-// fs.writeFile("testing.sh", bashy, function(err) {
-//   if (err) {
-//     return console.log(err);
-//   }
-//   console.log("The file was saved!");
-// });

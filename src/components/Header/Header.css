@@ -1,0 +1,22 @@
+header {
+  width: 100%;
+  background-color: rgb(70, 150, 255);
+  height: 100%;
+}
+
+.inner {
+  padding-left: 40px;
+  margin: 0 auto;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+}
+
+h1, h2 {
+  margin: 10px;
+  color: white;
+}
+
+h1 {
+  font-size: 3em;
+}
