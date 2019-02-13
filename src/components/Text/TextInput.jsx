@@ -31,7 +31,7 @@ export default class TextInput extends PureComponent {
   }
 
   setGitWall(text) {
-    let textWall = getTextArray(text);
+    let textWall = getTextArray(text, this.props.drawValue);
     this.props.updateWall(textWall);
   }
 

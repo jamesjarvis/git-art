@@ -1,9 +1,9 @@
 const README_TEMPLATE = `# My Github Art\n
 Created using [git-art](https://github.com/jamesjarvis/git-art)`;
 
-/*
-Get the start date - so the first sunday 1 year ago.
-*/
+/**
+ * Returns the start date - so the first sunday 1 year ago.
+ */
 export function getStartDate() {
   let startDate = new Date();
   startDate.setUTCFullYear(startDate.getUTCFullYear() - 1);
@@ -20,9 +20,11 @@ export function getStartDate() {
   return startDate;
 }
 
-/* 
-Returns a string of commit information for that day, based on the number of commits requested.
-*/
+/**
+ * Returns a string of commit information for that day, based on the number of commits requested.
+ * @param {Date} date 
+ * @param {Number} commits 
+ */
 function commit(date, commits) {
   let commitDate = new Date(date.valueOf());
   let dayCommitInstructions = [];
@@ -35,10 +37,12 @@ function commit(date, commits) {
   return dayCommitInstructions;
 }
 
-/* 
-This function should convert the supplied 2d array from the parameter into a bash script which can be run by the user.
-The bash script should take the 2d array, create a git repo with the required commits and then upload it to the repo specified.
-*/
+/**
+ * This function should convert the supplied 2d array from the parameter into a bash script which can be run by the user.
+ * 
+ * @param {Array<Array<int>>} imageArray 
+ * @param {int} multiplier 
+ */
 export function generateBash(imageArray, multiplier = 1) {
   let startDate = getStartDate();
   const length = Math.min(...imageArray.map(x => x.length));

@@ -10,10 +10,22 @@ export default class Wall extends React.Component {
     super(props);
     this.state = {
       hasMouseDown: false,
-      export: ""
+      export: "",
+      value: 4
     };
     this.export = this.export.bind(this);
     this.reset = this.reset.bind(this);
+    this.updateInputValue = this.updateInputValue.bind(this);
+  }
+
+  updateInputValue(event) {
+    const {
+      target: { value }
+    } = event;
+
+    this.setState({
+      value: Math.min(value, 50)
+    });
   }
 
   reset() {
@@ -25,7 +37,10 @@ export default class Wall extends React.Component {
 
   export() {
     this.setState({
-      export: generateBash(this.props.allWall, 8)
+      export: generateBash(
+        this.props.allWall,
+        Math.max(Math.round(this.state.value / 4), 1)
+      )
     });
   }
 
@@ -70,8 +85,24 @@ export default class Wall extends React.Component {
               </div>
             );
           })}
-          <button onClick={this.reset}>Click me to reset</button>
-          <button onClick={this.export}>Click me to export</button>
+          <span className="options">
+            <button id="reset" onClick={this.reset}>
+              RESET
+            </button>
+            <button id="export" onClick={this.export}>
+              EXPORT
+            </button>
+            <label for="valueInput">Max commits in one day:</label>
+            <input
+              type="number"
+              name="quantity"
+              min="1"
+              max="50"
+              id="valueInput"
+              value={this.state.value}
+              onChange={this.updateInputValue}
+            />
+          </span>
           <pre>
             <code>{this.state.export}</code>
           </pre>

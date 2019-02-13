@@ -22,5 +22,27 @@ pre code {
   display: block;
   padding: 20px;
   overflow: scroll;
-  /* white-space: nowrap; */
+}
+
+#valueInput {
+  width: 40px;
+}
+
+.options {
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+
+#reset, #export {
+  border-radius: 3px;
+}
+
+#reset {
+  background-color: rgb(255, 221, 221);
+}
+
+#export {
+  background-color: rgb(230, 255, 230);
 }

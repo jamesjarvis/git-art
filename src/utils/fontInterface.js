@@ -5,15 +5,28 @@ https://github.com/pikesley/nineteen-eighty-two/blob/6057f8e478a560b9fd100553035
 and then converted to 7X7 2D array format for our purposes.
 */
 
+/**
+ * Returns a boolean indicating whether the character is in the font
+ * @param {String} character 
+ */
 export function checkCharExists(character) {
   return sinclair.hasOwnProperty(character);
 }
 
+/**
+ * Returns the 2D array representation of the character if it exists in the font, or false otherwise
+ * @param {String} character 
+ */
 export function getCharacterArray(character) {
   return checkCharExists(character) ? sinclair[character] : false;
 }
 
-export function getTextArray(text) {
+/**
+ * Returns the 2D array representation of the string passed in, encoded as the drawValue
+ * @param {String} text 
+ * @param {Number} drawValue
+ */
+export function getTextArray(text, drawValue) {
   var stringArray = [];
   for (var index = 0; index < text.length; index++) {
     var currentSinclairFont = getCharacterArray(text[index]);
@@ -30,7 +43,7 @@ export function getTextArray(text) {
           innerArrayIndex++
         ) {
           stringArray[outerArrayIndex].push(
-            currentSinclairFont[outerArrayIndex][innerArrayIndex]
+            currentSinclairFont[outerArrayIndex][innerArrayIndex] * drawValue
           );
         }
       }

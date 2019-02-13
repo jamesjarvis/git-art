@@ -7,6 +7,7 @@ import moment from "moment";
 import Wall from "../components/GitWall/Wall";
 import Header from "../components/Header/Header";
 import "./App.css";
+import Box from "./Box/Box";
 
 class App extends Component {
   constructor(props) {
@@ -15,7 +16,7 @@ class App extends Component {
       textWall: [],
       drawWall: blankWall(),
       allWall: blankWall(),
-      drawValue: 0
+      drawValue: 1
     };
     this._setDrawValue = this._setDrawValue.bind(this);
 
@@ -69,18 +70,28 @@ class App extends Component {
     return (
       <>
         <Header title="Git Art" description="Make your GitHub pretty" />
-        <TextInput updateWall={this._updateTextWall} />
-        <SelectColour
-          setDrawValue={this._setDrawValue}
-          drawValue={this.state.drawValue}
-        />
-        <Wall
-          allWall={this.state.allWall}
-          startDate={moment(getStartDate())}
-          drawValue={this.state.drawValue}
-          updateDrawWall={this._updateDrawWall}
-          reset={this._clearAllWall}
-        />
+        <main>
+          <Box title="General info">
+            <p>
+              Decorate/Vandalise your GitHub activity board! Choose your brush colour, and either draw with your mouse, or type in text. When ready, export and run the bash script.
+            </p>
+          </Box>
+          <TextInput
+            updateWall={this._updateTextWall}
+            drawValue={this.state.drawValue}
+          />
+          <SelectColour
+            setDrawValue={this._setDrawValue}
+            drawValue={this.state.drawValue}
+          />
+          <Wall
+            allWall={this.state.allWall}
+            startDate={moment(getStartDate())}
+            drawValue={this.state.drawValue}
+            updateDrawWall={this._updateDrawWall}
+            reset={this._clearAllWall}
+          />
+        </main>
       </>
     );
   }

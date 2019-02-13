@@ -25,6 +25,15 @@ export default function WallBox({value, date, hasMouseDown, x, y, drawValue, upd
           );
         }
       }}
+      onMouseUp={e => {
+        if (hasMouseDown) {
+          updateDrawWall(
+            x,
+            y,
+            drawValue
+          );
+        }
+      }}
     />
   );
 }
