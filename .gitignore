@@ -12,8 +12,9 @@ node_modules/
 .npm
 
 # Temporary dev files
-*.sh
+test.sh
 testing/
 
 # Auto generated files
 package-lock.json
+build/

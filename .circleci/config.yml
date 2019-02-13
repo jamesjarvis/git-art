@@ -1,0 +1,26 @@
+version: 2
+jobs:
+  build:
+    branches:
+      only:
+        - master
+    docker:
+      - image: circleci/node:8
+    environment:
+      - TARGET_BRANCH: gh-pages
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install dependencies
+          command: yarn
+      - save_cache:
+          paths:
+            - node_modules
+            - src/backend/node_modules
+          key: v1-dependencies-{{ checksum "yarn.lock" }}
+      - deploy:
+          name: Deploy
+          command: ./.circleci/deploy.sh
