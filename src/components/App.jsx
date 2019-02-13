@@ -73,7 +73,9 @@ class App extends Component {
         <main>
           <Box title="General info">
             <p>
-              Decorate/Vandalise your GitHub activity board! Choose your brush colour, and either draw with your mouse, or type in text. When ready, export and run the bash script.
+              Decorate/Vandalise your GitHub activity board! Choose your brush
+              colour, and either draw with your mouse, or type in text. When
+              ready, export and run the bash script.
             </p>
           </Box>
           <TextInput

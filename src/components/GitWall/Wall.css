@@ -34,15 +34,20 @@ pre code {
   justify-content: space-around;
 }
 
-
-#reset, #export {
+button {
   border-radius: 3px;
 }
 
-#reset {
+.danger {
   background-color: rgb(255, 221, 221);
 }
 
-#export {
+.good {
   background-color: rgb(230, 255, 230);
+}
+
+#save {
+  width: 50%;
+  margin: 5px auto;
+  display: block;
 }

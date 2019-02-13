@@ -6,7 +6,7 @@ import "./SelectColour.css";
 export default function SelectColour({ setDrawValue, drawValue }) {
   const colours = [0, 1, 2, 3, 4];
   return (
-    <Box title="Choose a colour">
+    <Box title="Choose a brush colour">
       <div className="draw">
         {colours.map(colour => (
           <label key={classNameFromVal(colour)} className="radio">

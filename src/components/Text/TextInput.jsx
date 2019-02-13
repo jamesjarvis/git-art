@@ -13,6 +13,29 @@ export default class TextInput extends PureComponent {
     this.updateInputValue = this.updateInputValue.bind(this);
   }
 
+  componentDidMount() {
+    const random = [
+      " hello",
+      "welcome",
+      "!!!!!!!!",
+      "$$$$$$$$",
+      "hire me",
+      "++++++++",
+      "********",
+      "01234567",
+      "qwerty",
+      "commits",
+      "howdy",
+      "3.141592",
+      "#trendy"
+    ];
+    const temp = random[Math.floor(Math.random() * random.length)];
+    this.setState({
+      text: temp
+    });
+    this.setGitWall(temp);
+  }
+
   updateInputValue(event) {
     const {
       target: { value }

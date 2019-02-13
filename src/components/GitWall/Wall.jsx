@@ -4,6 +4,7 @@ import moment from "moment";
 import "./Wall.css";
 import { generateBash } from "../../utils/convertToBash";
 import Box from "../Box/Box";
+import { saveAs } from "file-saver";
 
 export default class Wall extends React.Component {
   constructor(props) {
@@ -16,6 +17,7 @@ export default class Wall extends React.Component {
     this.export = this.export.bind(this);
     this.reset = this.reset.bind(this);
     this.updateInputValue = this.updateInputValue.bind(this);
+    this.saveScript = this.saveScript.bind(this);
   }
 
   updateInputValue(event) {
@@ -42,6 +44,13 @@ export default class Wall extends React.Component {
         Math.max(Math.round(this.state.value / 4), 1)
       )
     });
+  }
+
+  saveScript() {
+    let blob = new Blob([this.state.export], {
+      type: "text/plain;charset=utf-8"
+    });
+    saveAs(blob, "git-art.sh");
   }
 
   render() {
@@ -86,13 +95,13 @@ export default class Wall extends React.Component {
             );
           })}
           <span className="options">
-            <button id="reset" onClick={this.reset}>
+            <button id="reset" className="danger" onClick={this.reset}>
               RESET
             </button>
-            <button id="export" onClick={this.export}>
+            <button id="export" className="ok" onClick={this.export}>
               EXPORT
             </button>
-            <label for="valueInput">Max commits in one day:</label>
+            <label htmlFor="valueInput">Max commits in one day:</label>
             <input
               type="number"
               name="quantity"
@@ -103,9 +112,14 @@ export default class Wall extends React.Component {
               onChange={this.updateInputValue}
             />
           </span>
-          <pre>
-            <code>{this.state.export}</code>
-          </pre>
+          {this.state.export && (
+            <pre>
+              <button id="save" className="good" onClick={this.saveScript}>
+                Save script
+              </button>
+              <code>{this.state.export}</code>
+            </pre>
+          )}
         </div>
       </Box>
     );
