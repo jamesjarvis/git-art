@@ -2,6 +2,7 @@
   "name": "git-art",
   "version": "0.1.0",
   "private": true,
+  "homepage" : "https://jamesjarvis.github.io/git-art/",
   "dependencies": {
     "file-saver": "^2.0.0",
     "moment": "^2.23.0",
