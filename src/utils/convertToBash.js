@@ -61,8 +61,8 @@ export function generateBash(imageArray, multiplier = 1) {
   }
 
   let bashScript = `#!/usr/bin/env bash
-  REPO=testing
-  UPLOAD_INSTRUCTIONS=${INSTRUCTIONS}
+  REPO=artistic
+  UPLOAD_INSTRUCTIONS="${INSTRUCTIONS}"
   git init $REPO
   cd $REPO
   touch README.md
@@ -76,13 +76,13 @@ export function generateBash(imageArray, multiplier = 1) {
   spinner() {
     printf "$0: Committing your art...   "
     while true; do
-      printf "\b/"
+      printf "\\b/"
       sleep 0.1
-      printf "\b-"
+      printf "\\b-"
       sleep 0.1
-      printf "\b\\"
+      printf "\\b\\\\"
       sleep 0.1
-      printf "\b|"
+      printf "\\b|"
       sleep 0.1
     done
   }
