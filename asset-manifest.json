@@ -1,13 +1,13 @@
 {
-  "main.css": "/git-art/static/css/main.9bf9a835.chunk.css",
-  "main.js": "/git-art/static/js/main.cc9ed8b5.chunk.js",
-  "main.js.map": "/git-art/static/js/main.cc9ed8b5.chunk.js.map",
-  "static/js/1.8af9f936.chunk.js": "/git-art/static/js/1.8af9f936.chunk.js",
-  "static/js/1.8af9f936.chunk.js.map": "/git-art/static/js/1.8af9f936.chunk.js.map",
+  "main.css": "/git-art/static/css/main.5c62d867.chunk.css",
+  "main.js": "/git-art/static/js/main.9164d051.chunk.js",
+  "main.js.map": "/git-art/static/js/main.9164d051.chunk.js.map",
+  "static/js/1.ef1426e8.chunk.js": "/git-art/static/js/1.ef1426e8.chunk.js",
+  "static/js/1.ef1426e8.chunk.js.map": "/git-art/static/js/1.ef1426e8.chunk.js.map",
   "runtime~main.js": "/git-art/static/js/runtime~main.cf940cbc.js",
   "runtime~main.js.map": "/git-art/static/js/runtime~main.cf940cbc.js.map",
-  "static/css/main.9bf9a835.chunk.css.map": "/git-art/static/css/main.9bf9a835.chunk.css.map",
+  "static/css/main.5c62d867.chunk.css.map": "/git-art/static/css/main.5c62d867.chunk.css.map",
   "index.html": "/git-art/index.html",
-  "precache-manifest.b823904fd0bb7b8dff1337f19ed8404f.js": "/git-art/precache-manifest.b823904fd0bb7b8dff1337f19ed8404f.js",
+  "precache-manifest.25aae7e90195de8ed6ac8c2d94210ef6.js": "/git-art/precache-manifest.25aae7e90195de8ed6ac8c2d94210ef6.js",
   "service-worker.js": "/git-art/service-worker.js"
 }
