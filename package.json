@@ -5,7 +5,7 @@
   "homepage": "https://jamesjarvis.github.io/git-art/",
   "dependencies": {
     "file-saver": "^2.0.0",
-    "moment": "^2.23.0",
+    "moment": "^2.25.3",
     "prettier": "^1.15.3",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
