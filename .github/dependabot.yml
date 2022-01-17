@@ -1,21 +1,15 @@
 version: 2
 updates:
-- package-ecosystem: npm
-  directory: "/"
-  schedule:
-    interval: daily
-    time: "09:00"
-  open-pull-requests-limit: 30
-  reviewers:
-  - jamesjarvis
-  ignore:
-  - dependency-name: react-scripts
-    versions:
-    - 4.0.1
-    - 4.0.2
-  - dependency-name: react
-    versions:
-    - 17.0.1
-  - dependency-name: react-dom
-    versions:
-    - 16.13.0
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    assignees:
+      - jamesjarvis
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: daily
+    assignees:
+      - jamesjarvis
