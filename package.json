@@ -1,30 +1,32 @@
 {
-  "name": "git-art",
-  "version": "0.1.0",
-  "private": true,
-  "homepage": "https://jamesjarvis.github.io/git-art/",
-  "dependencies": {
-    "file-saver": "^2.0.0",
-    "moment": "^2.29.1",
-    "prettier": "^2.5.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-router-dom": "^6.2.1",
-    "react-scripts": "3.3.0"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+    "name": "git-art",
+    "version": "v1.0.0",
+    "private": true,
+    "homepage": "https://jamesjarvis.github.io/git-art/",
+    "dependencies": {
+        "file-saver": "^2.0.0",
+        "moment": "^2.29.1",
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2",
+        "react-router-dom": "^6.2.1"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject"
+    },
+    "eslintConfig": {
+        "extends": "react-app"
+    },
+    "browserslist": [
+        ">0.2%",
+        "not dead",
+        "not ie <= 11",
+        "not op_mini all"
+    ],
+    "devDependencies": {
+        "prettier": "^2.5.1",
+        "react-scripts": "^5.0.0"
+    }
 }
